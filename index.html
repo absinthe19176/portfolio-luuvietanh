@@ -3,229 +3,467 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Lưu Việt Anh</title>
+    <title>Digital Portfolio | Lưu Việt Anh - ULIS VNU</title>
     <style>
-        /* CSS STYLING */
         :root {
-            --primary-navy: #0F172A;
-            --accent-blue: #38BDF8;
-            --text-light: #F8FAFC;
-            --text-muted: #94A3B8;
-            --bg-light: #F1F5F9;
-            --card-bg: #FFFFFF;
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #0ea5e9;
+            --accent-hover: #0284c7;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #334155;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background-color: var(--bg-light);
-            color: #333;
-            line-height: 1.6;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding-top: 70px;
         }
 
         /* Navigation */
         nav {
-            background-color: var(--primary-navy);
-            padding: 1rem 5%;
+            background-color: var(--primary);
+            color: white;
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
+            width: 100%;
+            height: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        nav h1 {
-            color: var(--text-light);
-            font-size: 1.5rem;
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        nav h1 span {
-            color: var(--accent-blue);
+        nav .logo span {
+            color: var(--accent);
         }
 
         nav ul {
-            list-style: none;
             display: flex;
+            list-style: none;
             gap: 2rem;
         }
 
-        nav a {
-            color: var(--text-light);
+        nav ul a {
+            color: #cbd5e1;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--accent-blue);
+        nav ul a:hover {
+            color: var(--accent);
         }
 
-        /* Header / Hero Section */
+        /* Hero / Introduction Section */
         header {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 150px 5% 100px;
-            text-align: center;
-        }
-
-        header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        header p.subtitle {
-            color: var(--accent-blue);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        header .intro-text {
-            max-width: 800px;
-            margin: 0 auto;
-            color: var(--text-muted);
-        }
-
-        /* Sections */
-        section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
             padding: 80px 5%;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        header .meta-info {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        header .intro-box {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        header .intro-box p {
+            margin-bottom: 15px;
+            color: #e2e8f0;
+        }
+
+        /* Badges */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .badge {
+            background: rgba(14, 165, 233, 0.15);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        /* Section Global Layout */
+        section {
+            padding: 60px 5%;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
-            text-align: center;
             font-size: 2rem;
-            color: var(--primary-navy);
+            color: var(--text-dark);
             margin-bottom: 40px;
-            position: relative;
+            border-left: 5px solid var(--accent);
+            padding-left: 15px;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent-blue);
-            margin: 10px auto 0;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        /* Project Cards Style */
+        .project-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
         .project-card {
             background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--accent-blue);
-            transition: transform 0.3s ease;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
         }
 
-        .project-card h3 {
-            color: var(--primary-navy);
+        .project-header {
+            background-color: #f8fafc;
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .project-header h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+        }
+
+        /* Download Button Component */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+        }
+
+        .project-body {
+            padding: 30px;
+        }
+
+        .project-body h4 {
+            color: var(--primary-light);
+            margin: 15px 0 8px;
+            font-size: 1.05rem;
+        }
+
+        .project-body p {
+            color: var(--text);
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .project-body ul {
+            margin-left: 20px;
             margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .project-body li {
+            margin-bottom: 6px;
+        }
+
+        /* Reflection / Summary Container */
+        .reflection-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .reflection-card h3 {
+            color: var(--text-dark);
+            margin-top: 25px;
+            margin-bottom: 12px;
             font-size: 1.2rem;
         }
 
-        .project-card p {
-            color: #555;
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-        }
-
-        /* Reflection Section */
-        .reflection-container {
-            background-color: var(--card-bg);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .reflection-container h3 {
-            color: var(--primary-navy);
-            margin: 20px 0 10px;
+        .reflection-card p {
+            margin-bottom: 15px;
+            text-align: justify;
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary-navy);
+            background-color: var(--primary);
             color: var(--text-muted);
             text-align: center;
-            padding: 30px;
-            margin-top: 50px;
+            padding: 25px;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--primary-light);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Thanh điều hướng -->
     <nav>
-        <h1>Lưu Việt <span>Anh</span></h1>
+        <div class="logo">Lưu Việt <span>Anh</span></div>
         <ul>
-            <li><a href="#home">Giới thiệu</a></li>
-            <li><a href="#projects">Dự án học tập</a></li>
-            <li><a href="#reflection">Tổng kết</a></li>
+            <li><a href="#intro">Giới thiệu</a></li>
+            <li><a href="#projects">Dự án thành phần</a></li>
+            <li><a href="#summary">Tổng kết học kỳ</a></li>
         </ul>
     </nav>
 
-    <header id="home">
-        <h2>Xin chào, em là Lưu Việt Anh</h2>
-        <p class="subtitle">Sinh viên K18 (QH2025) - ULIS, VNU</p>
-        <p class="intro-text">
-            Chào mừng đến với Portfolio cá nhân của em. Đây là không gian lưu trữ và trưng bày sự trưởng thành qua môn học Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo. Sự giao thoa giữa ngôn ngữ, văn hóa và công nghệ số chính là nguồn cảm hứng để em xây dựng trang web này, phản ánh tư duy phản biện và khả năng ứng dụng AI vào thực tiễn.
-        </p>
+    <!-- Phần Giới thiệu bản thân -->
+    <header id="intro">
+        <h1>BÀI TẬP DỰ ÁN CÁ NHÂN (PORTFOLIO)</h1>
+        <div class="meta-info">Trường Đại học Ngoại ngữ - Đại học Quốc gia Hà Nội (ULIS - VNU)</div>
+        
+        <div class="intro-box">
+            <p><strong>Họ và tên sinh viên:</strong> Lưu Việt Anh</p>
+            <p><strong>Mã số sinh viên:</strong> 25040010</p>
+            <p><strong>Ngành học:</strong> Sư phạm Tiếng Anh</p>
+            <p><strong>Thời gian thực hiện:</strong> Học kỳ 2, Năm học 2025-2026 (Sinh viên năm thứ 1)</p>
+            <p><strong>Mục tiêu dự án:</strong> Hệ thống hóa toàn bộ minh chứng thực hành, báo cáo nghiên cứu và kỹ năng số tích lũy trong môn học Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo. Portfolio đóng vai trò như một không gian lưu trữ chuyên nghiệp, thể hiện năng lực thích ứng công nghệ số và tư duy phản biện.</p>
+            <p><strong>Các công cụ AI đã thực hành chuyên sâu:</strong></p>
+            <div class="badge-container">
+                <div class="badge">Google Gemini</div>
+                <div class="badge">ChatGPT (GPT-4o)</div>
+                <div class="badge">Stable Diffusion</div>
+                <div class="badge">Canva AI (Magic Design)</div>
+            </div>
+        </div>
     </header>
 
+    <!-- Danh sách Dự án thành phần -->
     <section id="projects">
-        <h2 class="section-title">Các Dự Án Đã Thực Hiện</h2>
+        <h2 class="section-title">Danh mục các báo cáo dự án thành phần</h2>
         
-        <div class="projects-grid">
+        <div class="project-container">
+
+            <!-- Bài 1 -->
             <div class="project-card">
-                <h3>1. Quản lý tệp và thư mục</h3>
-                <p><strong>Quy tắc tổ chức:</strong> Thực hiện với tư duy khoa học, đảm bảo tính nhất quán và dễ dàng truy xuất dữ liệu.</p>
-                <p><strong>Thực thi:</strong> Khởi tạo cấu trúc logic, đổi tên tệp chuẩn mực và ứng dụng linh hoạt các phím tắt quản lý tệp trên hệ điều hành.</p>
+                <div class="project-header">
+                    <h3>Bài 1: Thao tác cơ bản với tệp tin và thư mục trên Windows</h3>
+                    <a href="BÁO CÁO THỰC HÀNH BÀI 1_25040010_Lưu Việt Anh.docx" class="download-btn" download>
+                        📄 Tải tệp đính kèm
+                    </a>
+                </div>
+                <div class="project-body">
+                    <p><strong>Nội dung tóm tắt:</strong> Báo cáo ghi lại toàn bộ quy trình thiết lập hệ thống lưu trữ dữ liệu khoa học trên hệ điều hành. Sinh viên thực hiện chuẩn hóa cấu trúc quản lý thông qua việc tạo lập thư mục chuyên biệt, áp dụng các kỹ thuật quản lý dữ liệu nền tảng và tối ưu hóa thao tác bằng phím tắt.</p>
+                    <h4>Các nội dung cốt lõi đã hoàn thành:</h4>
+                    <ul>
+                        <li>Khởi tạo cấu trúc thư mục gốc logic tại phân vùng lưu trữ máy tính: <code>Documents</code> &rarr; <code>ThucHanh_LuuVietAnh</code>.</li>
+                        <li>Thực hiện đổi tên tệp tin hệ thống theo quy định để tối ưu hóa khả năng nhận diện dữ liệu (từ <code>GhiChu.txt</code> thành <code>GhiChuQuanTrong.txt</code>).</li>
+                        <li>Xây dựng cấu trúc thư mục con <code>TaiLieu</code> và thực hiện các thao tác luân chuyển dữ liệu như sao chép (Copy & Paste), di chuyển (Cut & Paste).</li>
+                        <li>Làm chủ cơ chế xóa tệp vĩnh viễn (Shift + Delete) kết hợp kiểm soát khôi phục từ Thùng rác (Recycle Bin).</li>
+                    </ul>
+                </div>
             </div>
 
+            <!-- Bài 2 -->
             <div class="project-card">
-                <h3>2. Tìm kiếm & Đánh giá thông tin</h3>
-                <p><strong>Chủ đề:</strong> Tác động của "Văn hóa tẩy chay" (Cancel Culture).</p>
-                <p><strong>Chiến lược:</strong> Sử dụng toán tử tìm kiếm nâng cao để thu thập 10 tài liệu học thuật. Áp dụng mô hình CRAAP để đánh giá độ tin cậy từ các tạp chí Q1 đến sách chuyên khảo.</p>
+                <div class="project-header">
+                    <h3>Bài 2: Tìm kiếm và đánh giá thông tin khoa học học thuật</h3>
+                    <a href="BÁO CÁO THỰC HÀNH BÀI 2_25040010_Lưu Việt Anh.docx" class="download-btn" download>
+                        📄 Tải tệp đính kèm
+                    </a>
+                </div>
+                <div class="project-body">
+                    <p><strong>Nội dung tóm tắt:</strong> Nghiên cứu chuyên sâu về chủ đề phức tạp: <em>"Phân tích tác động đa chiều của Văn hóa tẩy chay (Cancel Culture) đến tâm lý hành vi và tự do ngôn luận trên không gian mạng"</em>. Dự án sử dụng hệ thống lọc tài liệu nghiên cứu từ 2015 đến nay trên các cơ sở dữ liệu học thuật quốc tế.</p>
+                    <h4>Các nội dung cốt lõi đã hoàn thành:</h4>
+                    <ul>
+                        <li>Khai thác nâng cao các toán tử tìm kiếm chuyên sâu như <code>site:</code>, <code>filetype:</code> để chắt lọc giữa bài viết cá nhân và bài báo khoa học.</li>
+                        <li>Tổng hợp và phân tích 10 nguồn tài liệu uy tín từ các tạp chí bình duyệt quốc tế Q1 (như <em>Discourse & Society, Political Studies</em>), sách chuyên khảo và báo cáo think-tank (Pew Research Center).</li>
+                        <li>Xây dựng bảng tổng hợp đánh giá độ tin cậy của nguồn dựa trên 5 tiêu chí CRAAP khắt khe (Tác giả, Cơ quan xuất bản, Phương pháp nghiên cứu, Mức độ trích dẫn, Tính cập nhật).</li>
+                        <li>Phát hiện cơ chế "buồng vang" (echo chambers), hiệu ứng "tự kiểm duyệt" ngôn ngữ, và bóc tách ranh giới mỏng manh giữa đòi hỏi trách nhiệm giải trình trực tuyến với sự bất bình đẳng quyền lực đám đông.</li>
+                    </ul>
+                </div>
             </div>
 
+            <!-- Bài 3 -->
             <div class="project-card">
-                <h3>3. Viết Prompt hiệu quả</h3>
-                <p><strong>Kỹ thuật:</strong> Ứng dụng mô hình 4C (Context, Clarity, Constraints, Chain-of-Thought) để kiểm soát đầu ra của LLM.</p>
-                <p><strong>Kết quả:</strong> Tối ưu hóa việc học lập trình C và nghiên cứu học thuật bằng cách thiết lập ràng buộc định dạng và kỹ thuật Few-Shot.</p>
+                <div class="project-header">
+                    <h3>Bài 3: Kỹ nghệ viết câu lệnh hiệu quả (Prompt Engineering)</h3>
+                    <a href="BÁO CÁO THỰC HÀNH BÀI 3_25040010_Lưu Việt Anh.docx" class="download-btn" download>
+                        📄 Tải tệp đính kèm
+                    </a>
+                </div>
+                <div class="project-body">
+                    <p><strong>Nội dung tóm tắt:</strong> Thử nghiệm và tối ưu hóa câu lệnh qua 3 phiên bản (Cơ bản, Cải tiến, Nâng cao) áp dụng vào 3 tác vụ nhận thức học tập khác nhau. Báo cáo làm rõ cơ chế tương tác và kiểm soát các Mô hình ngôn ngữ lớn (LLM) thông qua tư duy thiết kế kỹ thuật.</p>
+                    <h4>Các nội dung cốt lõi đã hoàn thành:</h4>
+                    <ul>
+                        <li><strong>Tác vụ 1 (Tóm tắt bài đọc học thuật về Cancel Culture):</strong> Áp dụng cấu trúc Chain-of-Thought (Phân tách Trích xuất luận điểm &rarr; Tổng hợp học thuật &rarr; Kích thích phản biện) giúp loại bỏ từ ngữ rác, cô đọng văn phong hàn lâm.</li>
+                        <li><strong>Tác vụ 2 (Giải thích khái niệm phức tạp về Con trỏ trong Lập trình C):</strong> Ứng dụng kỹ thuật Role Prompting kết hợp Analogy Prompting (phép loại suy ẩn dụ về số nhà và hộp thư công cộng) giúp sinh viên năm nhất vượt qua khủng hoảng nhận thức bản đồ bộ nhớ RAM.</li>
+                        <li><strong>Tác vụ 3 (Tạo bộ câu hỏi ôn tập về tác động môi trường của Fast Fashion):</strong> Kết hợp Few-Shot Prompting (cung cấp biểu mẫu mẫu) và ràng buộc suy luận logic để ép AI đưa ra phần "Biện giải khoa học" chuyên sâu, giải mã bẫy nhận thức của các phương án sai.</li>
+                    </ul>
+                </div>
             </div>
 
+            <!-- Bài 4 -->
             <div class="project-card">
-                <h3>4. Hợp tác trực tuyến</h3>
-                <p><strong>Quy trình:</strong> Vận hành hệ sinh thái làm việc khép kín qua Trello, Google Docs, Drive và Zalo cho dự án "AI trong dự đoán thiên tai".</p>
-                <p><strong>Kỹ năng:</strong> Đồng bộ hóa lịch trình, phân quyền tài liệu số liệu thô và giải quyết xung đột định dạng trực tuyến.</p>
+                <div class="project-header">
+                    <h3>Bài 4: Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
+                    <a href="BÁO CÁO THỰC HÀNH BÀI 4_25040010_Lưu Việt Anh.docx" class="download-btn" download>
+                        📄 Tải tệp đính kèm
+                    </a>
+                </div>
+                <div class="project-body">
+                    <p><strong>Nội dung tóm tắt:</strong> Ghi lại trải nghiệm cá nhân phụ trách nội dung <em>"Phần II - Ứng dụng AI trong dự đoán thiên tai (bão, mưa lớn, lũ quét)"</em> trong bài tập nhóm. Báo cáo phân tích cách thức tổ chức không gian làm việc số và các giải pháp vượt qua thách thức giao tiếp trực tuyến.</p>
+                    <h4>Các nội dung cốt lõi đã hoàn thành:</h4>
+                    <ul>
+                        <li>Thiết lập và đồng bộ hóa hệ sinh thái 4 công cụ cốt lõi: Trello (quản lý tiến độ qua nhãn màu), Google Docs (soạn thảo chung), Google Drive (lưu trữ đa cấp), và Zalo (giao tiếp tức thời).</li>
+                        <li>Chuẩn hóa quy trình đặt tên tệp tin nghiêm ngặt <code>21052026_NoiDungBaoCao_LuuVietAnh</code> và phân quyền truy cập "Người Nhận Xét" để bảo vệ tính toàn vẹn của dữ liệu thô.</li>
+                        <li>Giải quyết triệt để 3 thách thức lớn của nhóm: lỗi xung đột định dạng tài liệu bằng cơ chế "Suggesting"; hiện tượng trôi thông tin bằng giải pháp đính kèm link trực tiếp vào thẻ Trello; kiểm soát hội chứng bỏ quên công cụ nhờ đồng bộ hóa Trello với Google Calendar.</li>
+                    </ul>
+                </div>
             </div>
 
+            <!-- Bài 5 -->
             <div class="project-card">
-                <h3>5. Sáng tạo nội dung với AI</h3>
-                <p><strong>Sản phẩm:</strong> Thuyết trình đa phương tiện "AI-Driven Weather Forecasting".</p>
-                <p><strong>Công cụ:</strong> Gemini (Dàn ý), Stable Diffusion (Tạo ảnh siêu thực), Canva AI (Bố cục).</p>
-                <p><strong>Tích hợp:</strong> Đối chiếu số liệu từ Google DeepMind để khắc phục "ảo giác" AI, kiểm soát 60% hàm lượng chất xám.</p>
+                <div class="project-header">
+                    <h3>Bài 5: Ứng dụng AI tạo sinh hỗ trợ sáng tạo nội dung đa phương tiện</h3>
+                    <a href="BÁO CÁO THỰC HÀNH BÀI 5_25040010_Lưu Việt Anh.docx" class="download-btn" download>
+                        📄 Tải tệp đính kèm
+                    </a>
+                </div>
+                <div class="project-body">
+                    <p><strong>Nội dung tóm tắt:</strong> Thiết kế bài thuyết trình đa phương tiện chuyên nghiệp về chủ đề công nghệ khí tượng. Dự án thể hiện quy trình phối hợp nhịp nhàng giữa năng lực sáng tạo cá nhân và khả năng hỗ trợ đắc lực từ các công cụ trí tuệ nhân tạo tạo sinh.</p>
+                    <h4>Các nội dung cốt lõi đã hoàn thành:</h4>
+                    <ul>
+                        <li>Phối hợp đồng bộ hệ thống AI: Google Gemini (nghiên cứu kiến thức sâu, lập kịch bản slide), Stable Diffusion (kỹ nghệ câu lệnh tạo ảnh siêu thực 8k về bão và mạng thần kinh), Canva AI Magic Design (gợi ý phân cấp thị giác và hiệu ứng kính mờ glassmorphism).</li>
+                        <li>Xác lập tỷ lệ đóng góp chuẩn mực (40% AI - 60% Con người): Trực tiếp thực hiện khâu tích hợp, biên tập cốt lõi, loại bỏ các chi tiết layout khô khan.</li>
+                        <li>Chủ động kiểm chứng và hiệu đính dữ liệu: Tra cứu lại các công bố chính thức từ Google DeepMind về mô hình GraphCast và Pangu-Weather để đính chính lỗi ảo giác thông số thời gian do AI tạo ra, chắt lọc văn bản thành từ khóa súc tích phục vụ trải nghiệm thị giác.</li>
+                    </ul>
+                </div>
             </div>
 
+            <!-- Bài 6 -->
             <div class="project-card">
-                <h3>6. AI có trách nhiệm</h3>
-                <p><strong>Nhận thức:</strong> Bảo vệ quyền sở hữu trí tuệ và ngăn ngừa sự "teo cơ" trí tuệ.</p>
-                <p><strong>Nguyên tắc:</strong> Thiết lập bộ 6 quy tắc cá nhân, bao gồm "Làm chủ", "Não bộ
+                <div class="project-header">
+                    <h3>Bài 6: Sử dụng AI có trách nhiệm và liêm chính học thuật</h3>
+                    <a href="BÁO CÁO THỰC HÀNH BÀI 6_25040010_Lưu Việt Anh.docx" class="download-btn" download>
+                        📄 Tải tệp đính kèm
+                    </a>
+                </div>
+                <div class="project-body">
+                    <p><strong>Nội dung tóm tắt:</strong> Phân tích sâu sắc về khía cạnh đạo đức học thuật trong kỷ nguyên số. Sinh viên thực hiện đối chiếu chính sách quản lý AI của các trường đại học hàng đầu và ứng dụng quy trình kiểm chứng độc lập khi thực hiện nhiệm vụ tổng hợp tài liệu.</p>
+                    <h4>Các nội dung cốt lõi đã hoàn thành:</h4>
+                    <ul>
+                        <li>Nghiên cứu mô hình quản lý AI dựa trên nguyên tắc "Minh bạch và Chịu trách nhiệm" của RMIT (chia làm 3 mức độ cho phép) và bộ quy tắc Liêm chính học thuật của VNU.</li>
+                        <li>Thực hành lập dàn ý bài luận về sức khỏe tinh thần bằng ChatGPT (GPT-4o), áp dụng mô hình CRAAP để đánh giá và tra cứu chéo trên Google Scholar/ResearchGate để phát hiện, loại bỏ nguồn tài liệu bị ảo giác.</li>
+                        <li>Thực hiện trích dẫn minh bạch việc ứng dụng công cụ AI theo đúng chuẩn quốc tế APA 7th Edition nhằm công khai nguồn gốc ý tưởng.</li>
+                        <li>Phân tích sâu rủi ro đạo đức về sự "teo cơ nhận thức" (cognitive atrophy) khi lạm dụng công nghệ, đồng thời thiết lập bộ 6 nguyên tắc cá nhân bất biến (Làm chủ, Não bộ đi trước, Kiểm chứng 100%, Minh bạch tuyệt đối, Bảo mật dữ liệu, Bảo vệ kỹ năng).</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Phần Tổng kết toàn diện -->
+    <section id="summary">
+        <h2 class="section-title">Tổng kết và đánh giá bản thân toàn diện</h2>
+        <div class="reflection-card">
+            <h3>1. Nhìn lại hành trình phát triển năng lực số</h3>
+            <p>Trải qua một học kỳ học tập và thực hành thực tế, em nhận thấy bản thân đã có một bước chuyển biến vượt bậc về mặt nhận thức lẫn kỹ năng hành vi: từ một người sử dụng công nghệ số một cách thụ động, mang tính bản năng sang tư duy của một người làm chủ và điều phối công nghệ một cách chủ động, khoa học. Việc vật lộn và vượt qua các rào cản kỹ thuật như cấu trúc dữ liệu, kỹ nghệ prompt engineering và lỗi ảo giác của AI đã giúp em hình dung rõ ràng về kiến trúc vận hành của dòng chảy thông tin trực tuyến.</p>
+            
+            <h3>2. Giao thoa giữa Công nghệ số và Chuyên ngành Sư phạm Tiếng Anh</h3>
+            <p>Là một sinh viên ngành Sư phạm Tiếng Anh tại ULIS, em hiểu rằng công nghệ số không chỉ đơn thuần là công cụ bổ trợ, mà sẽ là một phần không thể tách rời trong không gian lớp học hiện đại tương lai. Các bài tập thực hành trong học kỳ vừa qua mang lại giá trị ứng dụng thực tiễn rất cao đối với năng lực sư phạm của em:</p>
+            <ul>
+                <li>Kỹ năng <strong>Prompt Engineering (Bài 3)</strong> giúp em biết cách đóng vai một giáo viên tối ưu để thiết kế các bộ học liệu, bài kiểm tra trắc nghiệm khách quan đa dạng, tự động hóa việc biên giải khoa học sâu sắc giúp học sinh nhận diện bẫy tư duy của mình.</li>
+                <li>Khả năng <strong>Tìm kiếm và đánh giá thông tin (Bài 2, Bài 6)</strong> theo mô hình CRAAP giúp em rèn luyện bộ lọc tư duy, dễ dàng chắt lọc và thẩm định độ tin cậy của các học liệu tiếng Anh trực tuyến, ngăn ngừa triệt để việc đưa thông tin sai lệch vào bài giảng.</li>
+                <li>Năng lực <strong>Sáng tạo nội dung đa phương tiện (Bài 5)</strong> với sự hỗ trợ của Generative AI giúp em tối ưu hóa thời gian thiết kế bài giảng điện tử trực quan, tạo ra các hình ảnh minh họa độc bản kích thích tư duy thẩm mỹ của người học mà không lo ngại vấn đề bản quyền.</li>
+            </ul>
+
+            <h3>3. Thách thức lớn nhất và Bài học kinh nghiệm</h3>
+            <p>Thách thức lớn nhất mà em đối mặt chính là sự mơ hồ trong giai đoạn đầu tương tác với AI và rủi ro bị phụ thuộc nhận thức. Khi AI đưa ra các câu trả lời quá nhanh và mượt mà, bộ não con người rất dễ rơi vào bẫy lười biếng tư duy. Bài học xương máu em rút ra là nguyên tắc "Não bộ đi trước" (Human-first Draft): luôn sử dụng chất xám cá nhân để định hình khung xương logic trước khi mở các công cụ trợ lý máy móc. Đồng thời, cơ chế ảo giác (hallucination) của LLM buộc em luôn phải giữ thái độ hoài nghi khoa học, kiểm chứng độc lập 100% mọi dữ liệu trước khi tích hợp vào sản phẩm cuối cùng.</p>
+
+            <h3>4. Cam kết hành động và Định hướng tương lai</h3>
+            <p>Bộ 6 nguyên tắc cá nhân về sử dụng AI có trách nhiệm được em xây dựng trong Bài 6 không chỉ là một bài tập nộp để lấy điểm, mà sẽ là kim chỉ nam cho suốt hành trình 4 năm học tập tại ULIS và chặng đường phát triển nghề nghiệp giáo viên sau này. Em cam kết sẽ luôn giữ vững sự liêm chính học thuật, bảo vệ tính tự chủ trong tư duy phản biện cá nhân và không ngừng cập nhật năng lực thích ứng số để trở thành một giáo viên tiếng Anh hiện đại, bản lĩnh trong kỷ nguyên công nghệ.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Lưu Việt Anh | Mã số sinh viên: 25040010</p>
+        <p>Báo cáo Portfolio Cá nhân - Học kỳ 2, Năm học 2025-2026 - ULIS VNU</p>
+    </footer>
+
+</body>
+</html>
