@@ -1,1 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Lưu Việt Anh</title>
+    <style>
+        /* CSS STYLING */
+        :root {
+            --primary-navy: #0F172A;
+            --accent-blue: #38BDF8;
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+            --bg-light: #F1F5F9;
+            --card-bg: #FFFFFF;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary-navy);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+
+        nav h1 span {
+            color: var(--accent-blue);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Header / Hero Section */
+        header {
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            padding: 150px 5% 100px;
+            text-align: center;
+        }
+
+        header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p.subtitle {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        header .intro-text {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-muted);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-navy);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-blue);
+            margin: 10px auto 0;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .project-card p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        /* Reflection Section */
+        .reflection-container {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .reflection-container h3 {
+            color: var(--primary-navy);
+            margin: 20px 0 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-navy);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h1>Lưu Việt <span>Anh</span></h1>
+        <ul>
+            <li><a href="#home">Giới thiệu</a></li>
+            <li><a href="#projects">Dự án học tập</a></li>
+            <li><a href="#reflection">Tổng kết</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <h2>Xin chào, em là Lưu Việt Anh</h2>
+        <p class="subtitle">Sinh viên K18 (QH2025) - ULIS, VNU</p>
+        <p class="intro-text">
+            Chào mừng đến với Portfolio cá nhân của em. Đây là không gian lưu trữ và trưng bày sự trưởng thành qua môn học Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo. Sự giao thoa giữa ngôn ngữ, văn hóa và công nghệ số chính là nguồn cảm hứng để em xây dựng trang web này, phản ánh tư duy phản biện và khả năng ứng dụng AI vào thực tiễn.
+        </p>
+    </header>
+
+    <section id="projects">
+        <h2 class="section-title">Các Dự Án Đã Thực Hiện</h2>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>1. Quản lý tệp và thư mục</h3>
+                <p><strong>Quy tắc tổ chức:</strong> Thực hiện với tư duy khoa học, đảm bảo tính nhất quán và dễ dàng truy xuất dữ liệu.</p>
+                <p><strong>Thực thi:</strong> Khởi tạo cấu trúc logic, đổi tên tệp chuẩn mực và ứng dụng linh hoạt các phím tắt quản lý tệp trên hệ điều hành.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>2. Tìm kiếm & Đánh giá thông tin</h3>
+                <p><strong>Chủ đề:</strong> Tác động của "Văn hóa tẩy chay" (Cancel Culture).</p>
+                <p><strong>Chiến lược:</strong> Sử dụng toán tử tìm kiếm nâng cao để thu thập 10 tài liệu học thuật. Áp dụng mô hình CRAAP để đánh giá độ tin cậy từ các tạp chí Q1 đến sách chuyên khảo.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>3. Viết Prompt hiệu quả</h3>
+                <p><strong>Kỹ thuật:</strong> Ứng dụng mô hình 4C (Context, Clarity, Constraints, Chain-of-Thought) để kiểm soát đầu ra của LLM.</p>
+                <p><strong>Kết quả:</strong> Tối ưu hóa việc học lập trình C và nghiên cứu học thuật bằng cách thiết lập ràng buộc định dạng và kỹ thuật Few-Shot.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>4. Hợp tác trực tuyến</h3>
+                <p><strong>Quy trình:</strong> Vận hành hệ sinh thái làm việc khép kín qua Trello, Google Docs, Drive và Zalo cho dự án "AI trong dự đoán thiên tai".</p>
+                <p><strong>Kỹ năng:</strong> Đồng bộ hóa lịch trình, phân quyền tài liệu số liệu thô và giải quyết xung đột định dạng trực tuyến.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>5. Sáng tạo nội dung với AI</h3>
+                <p><strong>Sản phẩm:</strong> Thuyết trình đa phương tiện "AI-Driven Weather Forecasting".</p>
+                <p><strong>Công cụ:</strong> Gemini (Dàn ý), Stable Diffusion (Tạo ảnh siêu thực), Canva AI (Bố cục).</p>
+                <p><strong>Tích hợp:</strong> Đối chiếu số liệu từ Google DeepMind để khắc phục "ảo giác" AI, kiểm soát 60% hàm lượng chất xám.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>6. AI có trách nhiệm</h3>
+                <p><strong>Nhận thức:</strong> Bảo vệ quyền sở hữu trí tuệ và ngăn ngừa sự "teo cơ" trí tuệ.</p>
+                <p><strong>Nguyên tắc:</strong> Thiết lập bộ 6 quy tắc cá nhân, bao gồm "Làm chủ", "Não bộ
